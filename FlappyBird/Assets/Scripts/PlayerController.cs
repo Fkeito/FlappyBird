@@ -7,6 +7,9 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody rb;
     public float jumpVelocity;
 
+    private int count;
+    public UnityEngine.UI.Text countText;
+
     private GameOverManager goManager;
 
 	// Use this for initialization
@@ -28,6 +31,13 @@ public class PlayerController : MonoBehaviour {
         if(other.gameObject.CompareTag("Obstacle")){
             goManager.GameOver();
             Destroy(this.gameObject);
+        }
+    }
+    void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject.CompareTag("Sukima")){
+            count++;
+            countText.text = count.ToString();
         }
     }
 }

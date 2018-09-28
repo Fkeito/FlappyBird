@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody rb;
     public float jumpVelocity;
 
+    public UIManager uim;
+
     private GameOverManager goManager;
 
 	// Use this for initialization
@@ -28,6 +30,10 @@ public class PlayerController : MonoBehaviour {
         if(other.gameObject.CompareTag("Obstacle")){
             goManager.GameOver();
             Destroy(this.gameObject);
+        }
+        if(other.gameObject.CompareTag("Item")){
+            other.GetComponent<MeshRenderer>().enabled = false;
+            uim.GetItem();
         }
     }
 }

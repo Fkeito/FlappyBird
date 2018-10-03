@@ -9,17 +9,17 @@ public class ObstacleController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         float height = Random.Range(-3.5f, 3.5f);
-        this.transform.position += new Vector3(0, height, 0);
+        this.transform.localPosition += new Vector3(0, height, 0);
 	}
 	
 	// Update is called once per frame
 	void Update () {
         this.transform.position += speed * Vector3.left * Time.deltaTime;
-        if (this.transform.position.x <= -7) ResetPos();
+        if (this.transform.localPosition.x <= -7) ResetPos();
 	}
 
     private void ResetPos(){
         float height = Random.Range(-3.5f, 3.5f);
-        this.transform.position = new Vector3(6, height, 0);
+        this.transform.localPosition = new Vector3(6, height, 0);
     }
 }

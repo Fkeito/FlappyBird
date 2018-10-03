@@ -24,6 +24,14 @@ public class PlayerController : MonoBehaviour {
         }
 	}
 
+    void LateUpdate()
+    {
+        //90 ~ -90
+        float rotY = Mathf.Clamp(rb.velocity.y / jumpVelocity * 90f, -90f, 90f);
+        Quaternion rot = Quaternion.Euler(0 ,0 ,rotY);
+        this.transform.localRotation = rot;
+    }
+
     void OnTriggerEnter(Collider other){
         if(other.gameObject.CompareTag("Obstacle")){
             goManager.GameOver();
